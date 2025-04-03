@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resumo Interativo - Engenharia de Software</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+            max-width: 1000px;
+            margin: auto;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        h2 {
+            background-color: #3498db;
+            color: white;
+            padding: 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 25px;
+            transition: background-color 0.3s;
+        }
+        h2:hover {
+            background-color: #2980b9;
+        }
+        .content {
+            display: none;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-left: 4px solid #3498db;
+            margin-bottom: 20px;
+            border-radius: 0 5px 5px 0;
+        }
+        .example {
+            background-color: #e8f4fc;
+            padding: 12px;
+            border-radius: 5px;
+            margin: 15px 0;
+            border-left: 4px solid #3498db;
+        }
+        .example-title {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 8px;
+        }
+        ul.features {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        ul.features li {
+            padding: 8px 0;
+            padding-left: 30px;
+            position: relative;
+        }
+        ul.features li:before {
+            content: "✓";
+            color: #27ae60;
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+        .quiz {
+            background-color: #f0f7fd;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        .question {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .options {
+            margin-left: 20px;
+        }
+        .option {
+            margin: 8px 0;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 4px;
+            transition: background-color 0.2s;
+        }
+        .option:hover {
+            background-color: #e1f0fa;
+        }
+        .correct {
+            background-color: #d4edda;
+            color: #155724;
+            font-weight: bold;
+        }
+        .incorrect {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        .feedback {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 4px;
+            display: none;
+        }
+        .correct-feedback {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .incorrect-feedback {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #3498db;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Resumo Interativo - Engenharia de Software</h1>
+
+    <h2 onclick="toggleContent('introducao')">1. Introdução à Engenharia de Software</h2>
+    <div class="content" id="introducao">
+        <p>A Engenharia de Software é uma disciplina que se concentra no desenvolvimento, manutenção e gerenciamento de softwares de forma sistemática, utilizando princípios da engenharia para garantir qualidade, eficiência e escalabilidade.</p>
+        
+        <p><strong>Por que a Engenharia de Software é importante?</strong></p>
+        <ul class="features">
+            <li>Reduz custos de desenvolvimento e manutenção</li>
+            <li>Aumenta a confiabilidade e segurança dos sistemas</li>
+            <li>Garante que o software atenda aos requisitos do usuário</li>
+        </ul>
+        
+        <div class="quiz">
+            <div class="question">Qual é o principal objetivo da Engenharia de Software?</div>
+            <div class="options">
+                <div class="option" onclick="checkAnswer(this, 'correct', 'feedback1')">Desenvolver software de qualidade de forma sistemática</div>
+                <div class="option" onclick="checkAnswer(this, 'incorrect', 'feedback1')">Criar programas sem seguir metodologias</div>
+                <div class="option" onclick="checkAnswer(this, 'incorrect', 'feedback1')">Focar apenas na velocidade de desenvolvimento</div>
+            </div>
+            <div id="feedback1" class="feedback correct-feedback">Correto! A Engenharia de Software busca aplicar abordagens sistemáticas para desenvolver software de qualidade.</div>
+        </div>
+    </div>
+
+    <h2 onclick="toggleContent('ciclo_vida')">2. Ciclo de Vida do Software</h2>
+    <div class="content" id="ciclo_vida">
+        <p>O ciclo de vida de desenvolvimento de software (SDLC - Software Development Life Cycle) é um processo estruturado que define as fases do desenvolvimento de um software.</p>
+        
+        <p><strong>Principais Fases:</strong></p>
+        <ol>
+            <li><strong>Levantamento de Requisitos:</strong> Coleta das necessidades do cliente.</li>
+            <li><strong>Análise e Planejamento:</strong> Definição dos requisitos técnicos e de negócios.</li>
+            <li><strong>Projeto (Design):</strong> Arquitetura do sistema e interfaces gráficas.</li>
+            <li><strong>Implementação:</strong> Codificação e programação do software.</li>
+            <li><strong>Testes:</strong> Validação e verificação para encontrar falhas.</li>
+            <li><strong>Implantarão:</strong> Entrega do software ao usuário final.</li>
+            <li><strong>Manutenção:</strong> Correção de erros e atualizações.</li>
+        </ol>
+        
+        <div class="example">
+            <div class="example-title">Exemplo Prático:</div>
+            <p>Imagine que uma empresa deseja criar um aplicativo de entrega de comida. O ciclo de vida incluiria desde a definição dos requisitos (como rastreamento de pedidos e pagamento online) até a implementação, testes e manutenção contínua.</p>
+        </div>
+        
+        <div class="quiz">
+            <div class="question">Qual das fases do ciclo de vida do software envolve a programação do código?</div>
+            <div class="options">
+                <div class="option" onclick="checkAnswer(this, 'incorrect', 'feedback2')">Levantamento de Requisitos</div>
+                <div class="option" onclick="checkAnswer(this, 'incorrect', 'feedback2')">Projeto</div>
+                <div class="option" onclick="checkAnswer(this, 'correct', 'feedback2')">Implementação</div>
+                <div class="option" onclick="checkAnswer(this, 'incorrect', 'feedback2')">Testes</div>
+            </div>
+            <div id="feedback2" class="feedback correct-feedback">Correto! A fase de Implementação é onde ocorre a codificação do software.</div>
+        </div>
+    </div>
+
+    <h2 onclick="toggleContent('modelos')">3. Modelos de Desenvolvimento</h2>
+    <div class="content" id="modelos">
+        <p>Existem diferentes abordagens para o desenvolvimento de software.</p>
+        
+        <table>
+            <tr>
+                <th>Modelo</th>
+                <th>Características</th>
+                <th>Melhor Uso</th>
+            </tr>
+            <tr>
+                <td>Cascata (Waterfall)</td>
+                <td>Processo linear e sequencial</td>
+                <td>Projetos com requisitos bem definidos</td>
+            </tr>
+            <tr>
+                <td>Espiral</td>
+                <td>Enfatiza prototipagem e avaliação de riscos</td>
+                <td>Projetos com alto risco</td>
+            </tr>
+            <tr>
+                <td>Incremental</td>
+                <td>O software é desenvolvido em partes</td>
+                <td>Quando partes do sistema podem ser entregues separadamente</td>
+            </tr>
+            <tr>
+                <td>Ágil</td>
+                <td>Desenvolvimento iterativo e colaborativo</td>
+                <td>Ambientes dinâmicos com mudanças frequentes</td>
+            </tr>
+        </table>
+        
+        <div class="example">
+            <div class="example-title">Exemplo Prático:</div>
+            <p>Se uma startup precisa lançar rapidamente um MVP (produto mínimo viável), o modelo ágil é a melhor escolha, pois permite feedback constante dos usuários e ajustes rápidos.</p>
+        </div>
+        
+        <div class="quiz">
+            <div class="question">Qual modelo de desenvolvimento é mais indicado para projetos com mudanças frequentes?</div>
+            <div class="options">
+                <div class="option" onclick="checkAnswer(this, 'incorrect', 'feedback3')">Cascata</div>
+                <div class="option" onclick="checkAnswer(this, 'correct', 'feedback3')">Ágil</div>
+                <div class="option" onclick="checkAnswer(this, 'incorrect', 'feedback3')">Espiral</div>
+                <div class="option" onclick="checkAnswer(this, 'incorrect', 'feedback3')">Incremental</div>
+            </div>
+            <div id="feedback3" class="feedback correct-feedback">Correto! O modelo Ágil é ideal para ambientes dinâmicos com mudanças frequentes nos requisitos.</div>
+        </div>
+    </div>
+
+    <h2 onclick="toggleContent('qualidade')">4. Qualidade de Software</h2>
+    <div class="content" id="qualidade">
+        <p>A qualidade do software envolve a capacidade do sistema de atender aos requisitos e expectativas do usuário.</p>
+        
+        <p><strong>Principais Características:</strong></p>
+        <ul class="features">
+            <li><strong>Confiabilidade:</strong> O software executa corretamente sob condições específicas</li>
+            <li><strong>Manutenibilidade:</strong> Facilidade de corrigir e melhorar o software</li>
+            <li><strong>Eficiência:</strong> Uso otimizado de recursos do sistema</li>
+            <li><strong>Usabilidade:</strong> Facilidade de uso e aprendizado</li>
+            <li><strong>Portabilidade:</strong> Capacidade de ser executado em diferentes ambientes</li>
+        </ul>
+        
+        <div class="example">
+            <div class="example-title">Exemplo Prático:</div>
+            <p>Se um aplicativo de banco online tiver falhas constantes, a confiabilidade estará comprometida, o que pode afetar a reputação do banco e afastar clientes.</p>
+        </div>
+    </div>
+
+    <h2 onclick="toggleContent('testes')">5. Métodos de Teste de Software</h2>
+    <div class="content" id="testes">
+        <p>Os testes garantem que o software funcione corretamente antes de ser lançado.</p>
+        
+        <table>
+            <tr>
+                <th>Tipo de Teste</th>
+                <th>Objetivo</th>
+                <th>Nível</th>
+            </tr>
+            <tr>
+                <td>Teste Unitário</td>
+                <td>Verifica partes individuais do código</td>
+                <td>Baixo</td>
+            </tr>
+            <tr>
+                <td>Teste de Integração</td>
+                <td>Garante que os módulos funcionem bem juntos</td>
+                <td>Médio</td>
+            </tr>
+            <tr>
+                <td>Teste de Sistema</td>
+                <td>Avalia o software como um todo</td>
+                <td>Alto</td>
+            </tr>
+            <tr>
+                <td>Teste de Aceitação</td>
+                <td>Verifica se o software atende aos requisitos do cliente</td>
+                <td>Alto</td>
+            </tr>
+        </table>
+        
+        <div class="example">
+            <div class="example-title">Exemplo Prático:</div>
+            <p>Antes de lançar um e-commerce, a equipe testa o processo de compra para garantir que os pedidos sejam processados corretamente.</p>
+        </div>
+        
+        <div class="quiz">
+            <div class="question">Qual teste verifica se diferentes módulos do software funcionam corretamente juntos?</div>
+            <div class="options">
+                <div class="option" onclick="checkAnswer(this, 'incorrect', 'feedback4')">Teste Unitário</div>
+                <div class="option" onclick="checkAnswer(this, 'correct', 'feedback4')">Teste de Integração</div>
+                <div class="option" onclick="checkAnswer(this, 'incorrect', 'feedback4')">Teste de Sistema</div>
+                <div class="option" onclick="checkAnswer(this, 'incorrect', 'feedback4')">Teste de Aceitação</div>
+            </div>
+            <div id="feedback4" class="feedback correct-feedback">Correto! O Teste de Integração verifica a comunicação e interação entre diferentes módulos do sistema.</div>
+        </div>
+    </div>
+
+    <h2 onclick="toggleContent('requisitos')">6. Engenharia de Requisitos</h2>
+    <div class="content" id="requisitos">
+        <p>A engenharia de requisitos define as necessidades do sistema e como ele deve funcionar.</p>
+        
+        <p><strong>Tipos de Requisitos:</strong></p>
+        <ul>
+            <li><strong>Funcionais:</strong> O que o sistema deve fazer (ex: cadastrar usuários)</li>
+            <li><strong>Não Funcionais:</strong> Qualidade e desempenho (ex: tempo de resposta)</li>
+            <li><strong>Regras de Negócio:</strong> Restrições específicas da empresa (ex: políticas de desconto)</li>
+        </ul>
+        
+        <p><strong>Técnicas de Elicitação:</strong></p>
+        <ul>
+            <li>Entrevistas com stakeholders</li>
+            <li>Workshops com usuários finais</li>
+            <li>Análise de documentos</li>
+            <li>Prototipação</li>
+            <li>Observação do ambiente de trabalho</li>
+        </ul>
+        
+        <div class="example">
+            <div class="example-title">Exemplo Prático:</div>
+            <p>Um sistema de hospital deve permitir o cadastro de pacientes (requisito funcional) e operar com alta disponibilidade (requisito não funcional).</p>
+        </div>
+        
+        <div class="quiz">
+            <div class="question">Qual tipo de requisito define características como desempenho e segurança?</div>
+            <div class="options">
+                <div class="option" onclick="checkAnswer(this, 'incorrect', 'feedback5')">Requisitos Funcionais</div>
+                <div class="option" onclick="checkAnswer(this, 'correct', 'feedback5')">Requisitos Não-Funcionais</div>
+                <div class="option" onclick="checkAnswer(this, 'incorrect', 'feedback5')">Regras de Negócio</div>
+            </div>
+            <div id="feedback5" class="feedback correct-feedback">Correto! Requisitos não-funcionais definem atributos de qualidade como desempenho, segurança e usabilidade.</div>
+        </div>
+    </div>
+
+    <script>
+        // Função para mostrar/ocultar conteúdo
+        function toggleContent(id) {
+            const content = document.getElementById(id);
+            content.style.display = content.style.display === 'block' ? 'none' : 'block';
+        }
+        
+        // Função para verificar respostas do quiz
+        function checkAnswer(option, type, feedbackId) {
+            // Remove todas as classes de resposta dos irmãos
+            const siblings = option.parentNode.children;
+            for (let i = 0; i < siblings.length; i++) {
+                siblings[i].classList.remove('correct', 'incorrect');
+            }
+            
+            // Adiciona a classe apropriada à opção selecionada
+            option.classList.add(type);
+            
+            // Mostra o feedback
+            const feedback = document.getElementById(feedbackId);
+            feedback.style.display = 'block';
+            
+            // Adiciona classe de feedback apropriada
+            if (type === 'correct') {
+                feedback.className = 'feedback correct-feedback';
+            } else {
+                feedback.className = 'feedback incorrect-feedback';
+            }
+        }
+        
+        // Mostra a primeira seção por padrão
+        window.onload = function() {
+            document.getElementById('introducao').style.display = 'block';
+        };
+    </script>
+</body>
+</html>
